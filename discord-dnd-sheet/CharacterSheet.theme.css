@@ -15,18 +15,23 @@
    - In --dnd-sheet, "\A" starts a new line.
    ===================================================================== */
 :root {
-  --dnd-name:  "Thalia Emberwind";
-  --dnd-title: "Lvl 5 Tiefling Warlock";
-  --dnd-hp:    "HP 38/38";
-  --dnd-ac:    "AC 14";
+  --dnd-name:  "Nephilim \"Skyrender\" Vaunthal";
+  --dnd-title: "Lvl 3 Goliath Barbarian";
+  --dnd-hp:    "HP 35/35";
+  --dnd-ac:    "AC 15";
 
   --dnd-sheet:
-    "STR 8 (-1)   DEX 14 (+2)   CON 14 (+2)\A"
-    "INT 10 (+0)  WIS 12 (+1)   CHA 18 (+4)\A"
+    "Path of the Ancestral Guardian · Storm Goliath\A"
     "\A"
-    "Speed 30 ft   Init +2   Prof +3\A"
-    "Background: Haunted One\A"
-    "Alignment: Chaotic Good";
+    "STR 18 (+4)  DEX 14 (+2)  CON 16 (+3)\A"
+    "INT 8 (-1)   WIS 10 (+0)  CHA 12 (+1)\A"
+    "\A"
+    "Speed 30 ft   Init +2   Prof +2   Hit Die d12\A"
+    "Rage 3/long rest   Storm's Thunder 2/long rest\A"
+    "Greataxe +6 · 1d12+4   Greatclub (Push) +6 · 1d8+4\A"
+    "\A"
+    "Background: Gladiator\A"
+    "\"I owe my life to the arena fighters who raised me.\"";
 
   /* Your Discord user ID (Settings > Advanced > Developer Mode, then
      right-click yourself > Copy User ID). Then find-and-replace every

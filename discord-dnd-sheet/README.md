@@ -29,13 +29,14 @@ Discord renames its internal CSS classes now and then. The colours and fonts use
 
 ## Show your character to everyone (no mod needed)
 
-Paste this into **Settings → Profiles → About Me** and edit it:
+Paste this into **Settings → Profiles → About Me**. It fits under Discord's 190-character limit:
 
 ```
-⚔️ THALIA EMBERWIND — Lvl 5 Tiefling Warlock
-❤️ HP 38/38 · 🛡️ AC 14 · 🏃 30 ft · Init +2
-STR 8 · DEX 14 · CON 14 · INT 10 · WIS 12 · CHA 18
-📜 Haunted One · Chaotic Good
+⚔️ Nephilim "Skyrender" Vaunthal
+Lvl 3 Goliath Barbarian (Ancestral Guardian)
+❤️35 🛡️15 🏃30ft
+STR18 DEX14 CON16 INT8 WIS10 CHA12
+🪓 Greataxe +6 · 📜 Gladiator
 ```
 
 Also use your character art as your avatar and banner, and set your **Display Name** to the character's name.
