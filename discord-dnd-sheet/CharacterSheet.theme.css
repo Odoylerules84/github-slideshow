@@ -1,0 +1,195 @@
+/**
+ * @name Character Sheet
+ * @description Turns Discord into a parchment D&D-style character sheet and pins your character's stats to your own name, avatar and profile.
+ * @version 1.0.0
+ * @author you
+ */
+
+/* Fantasy fonts */
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=IM+Fell+English:ital@0;1&display=swap");
+
+/* =====================================================================
+   1. EDIT YOUR CHARACTER HERE
+   ---------------------------------------------------------------------
+   - Text values must stay inside "double quotes".
+   - In --dnd-sheet, "\A" starts a new line.
+   ===================================================================== */
+:root {
+  --dnd-name:  "Thalia Emberwind";
+  --dnd-title: "Lvl 5 Tiefling Warlock";
+  --dnd-hp:    "HP 38/38";
+  --dnd-ac:    "AC 14";
+
+  --dnd-sheet:
+    "STR 8 (-1)   DEX 14 (+2)   CON 14 (+2)\A"
+    "INT 10 (+0)  WIS 12 (+1)   CHA 18 (+4)\A"
+    "\A"
+    "Speed 30 ft   Init +2   Prof +3\A"
+    "Background: Haunted One\A"
+    "Alignment: Chaotic Good";
+
+  /* Your Discord user ID (Settings > Advanced > Developer Mode, then
+     right-click yourself > Copy User ID). Then find-and-replace every
+     YOUR_USER_ID in this file with that number. */
+}
+
+/* =====================================================================
+   2. PALETTE
+   ===================================================================== */
+:root,
+.theme-dark,
+.theme-light,
+.theme-darker,
+.theme-midnight {
+  --dnd-parchment:      #f1e4c3;
+  --dnd-parchment-dark: #e3d0a4;
+  --dnd-parchment-edge: #c9ae78;
+  --dnd-ink:            #2b1d0e;
+  --dnd-ink-soft:       #5a4630;
+  --dnd-blood:          #7a1712;
+  --dnd-gold:           #9c7a2b;
+
+  --font-primary:  "IM Fell English", Georgia, serif;
+  --font-display:  "Cinzel", Georgia, serif;
+  --font-headline: "Cinzel", Georgia, serif;
+
+  /* Map Discord's own colour variables onto the parchment palette */
+  --background-primary:            var(--dnd-parchment);
+  --background-secondary:          var(--dnd-parchment-dark);
+  --background-secondary-alt:      var(--dnd-parchment-edge);
+  --background-tertiary:           var(--dnd-parchment-edge);
+  --background-floating:           var(--dnd-parchment);
+  --background-base-low:           var(--dnd-parchment-dark);
+  --background-base-lower:         var(--dnd-parchment-edge);
+  --background-base-lowest:        var(--dnd-parchment-edge);
+  --background-surface-high:       var(--dnd-parchment);
+  --background-surface-higher:     var(--dnd-parchment);
+  --background-surface-highest:    var(--dnd-parchment);
+  --background-mod-subtle:         rgba(122, 23, 18, 0.08);
+  --background-mod-normal:         rgba(122, 23, 18, 0.14);
+  --background-mod-strong:         rgba(122, 23, 18, 0.22);
+  --background-modifier-hover:     rgba(122, 23, 18, 0.08);
+  --background-modifier-active:    rgba(122, 23, 18, 0.14);
+  --background-modifier-selected:  rgba(122, 23, 18, 0.18);
+  --background-message-hover:      rgba(122, 23, 18, 0.05);
+  --channeltextarea-background:    #f8eed6;
+  --chat-background-default:       var(--dnd-parchment);
+  --modal-background:              var(--dnd-parchment);
+  --input-background:              #f8eed6;
+
+  --text-normal:        var(--dnd-ink);
+  --text-default:       var(--dnd-ink);
+  --text-strong:        var(--dnd-ink);
+  --text-muted:         var(--dnd-ink-soft);
+  --text-secondary:     var(--dnd-ink-soft);
+  --header-primary:     var(--dnd-blood);
+  --header-secondary:   var(--dnd-ink-soft);
+  --interactive-normal: var(--dnd-ink-soft);
+  --interactive-hover:  var(--dnd-blood);
+  --interactive-active: var(--dnd-blood);
+  --interactive-muted:  #9a8668;
+  --channels-default:   var(--dnd-ink-soft);
+  --text-link:          var(--dnd-blood);
+  --brand-500:          var(--dnd-blood);
+  --brand-experiment:   var(--dnd-blood);
+  --border-subtle:      var(--dnd-parchment-edge);
+  --border-faint:       var(--dnd-parchment-edge);
+}
+
+/* =====================================================================
+   3. GENERAL "SHEET" LOOK
+   ===================================================================== */
+
+/* Paper grain on the chat area */
+main[class*="chatContent"],
+[class*="chat_"] > [class*="content"] {
+  background-image:
+    radial-gradient(ellipse at top left, rgba(255,255,255,.35), transparent 60%),
+    radial-gradient(ellipse at bottom right, rgba(120,80,30,.18), transparent 55%),
+    repeating-linear-gradient(0deg, rgba(90,60,20,.025) 0 2px, transparent 2px 4px);
+}
+
+/* Section headers look like sheet headings */
+h1, h2, h3,
+[class*="title_"],
+[class*="containerDefault"] [class*="name_"],
+[class*="headerText"] {
+  font-family: var(--font-display) !important;
+  letter-spacing: .04em;
+}
+
+/* Usernames in small caps, like field labels */
+[class*="username_"] {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  letter-spacing: .03em;
+}
+
+/* The message box looks like a ruled field */
+[class*="channelTextArea"] [class*="scrollableContainer"] {
+  border: 1px solid var(--dnd-parchment-edge);
+  border-bottom: 2px solid var(--dnd-ink-soft);
+  border-radius: 2px !important;
+}
+
+/* Popouts and modals get the double-rule border of a printed sheet */
+[class*="userPopout"],
+[class*="userProfileOuter"],
+[class*="userProfileModal"],
+[role="dialog"] [class*="inner_"] {
+  border: 3px double var(--dnd-blood) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 0 0 1px var(--dnd-parchment-edge), 0 8px 24px rgba(43,29,14,.35) !important;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar-thumb {
+  background-color: var(--dnd-parchment-edge) !important;
+  border-color: transparent !important;
+}
+
+/* =====================================================================
+   4. YOUR CHARACTER ON YOUR OWN MESSAGES
+   Replace YOUR_USER_ID below (keep the slashes around it).
+   ===================================================================== */
+
+/* Class/level tag after your name >>> YOUR_USER_ID <<< */
+[class*="message_"]:has(img[src*="/avatars/YOUR_USER_ID/"]) [class*="username_"]::after {
+  content: " · " var(--dnd-title) " · " var(--dnd-hp) " · " var(--dnd-ac);
+  font-family: var(--font-primary);
+  font-style: italic;
+  font-weight: 400;
+  font-size: .85em;
+  letter-spacing: 0;
+  color: var(--dnd-ink-soft);
+}
+
+/* Gold ring around your avatar >>> YOUR_USER_ID <<< */
+img[src*="/avatars/YOUR_USER_ID/"] {
+  outline: 2px solid var(--dnd-gold);
+  outline-offset: 1px;
+  filter: sepia(.25) contrast(1.05);
+}
+
+/* =====================================================================
+   5. FULL STAT BLOCK IN YOUR PROFILE POPOUT
+   Replace YOUR_USER_ID below.
+   ===================================================================== */
+
+/* >>> YOUR_USER_ID <<< */
+[class*="userPopout"]:has(img[src*="/avatars/YOUR_USER_ID/"]) [class*="body"]::before,
+[class*="userProfileOuter"]:has(img[src*="/avatars/YOUR_USER_ID/"]) [class*="body"]::before {
+  content: var(--dnd-name) "\A" var(--dnd-title) "   " var(--dnd-hp) "   " var(--dnd-ac) "\A\A" var(--dnd-sheet);
+  display: block;
+  white-space: pre-wrap;
+  margin: 8px 0 12px;
+  padding: 10px 12px;
+  font-family: var(--font-primary);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--dnd-ink);
+  background: #f8eed6;
+  border: 1px solid var(--dnd-parchment-edge);
+  border-left: 4px solid var(--dnd-blood);
+  border-radius: 3px;
+}
