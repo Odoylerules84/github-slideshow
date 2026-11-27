@@ -1,0 +1,15 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: cimg/ruby:3.3
+    steps:
+      - checkout
+      - run: script/setup
+      - run: script/cibuild
+
+workflows:
+  build:
+    jobs:
+      - build
